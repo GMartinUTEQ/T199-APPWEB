@@ -1,0 +1,24 @@
+td{
+  /*border:1pt;
+  border-style:solid;*/
+  text-align:center;
+  vertical-align:center;
+}
+
+.imglogo{
+  width:200px; 
+  height:100px;
+}
+
+.bth{
+border:1pt;
+  border-style:solid
+}
+
+table{
+  width: 100%;
+}
+
+#tablaeduc{
+  width: 60%;
+}
