@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1>Registra tu cuenta</h1>
-        <form action="creacuenta.php" method="post">
+        <form action="registro.php" method="post">
             <table style="width:50%">
                 <tr>
                     <td>
