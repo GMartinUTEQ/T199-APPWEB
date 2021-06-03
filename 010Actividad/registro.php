@@ -68,16 +68,16 @@
                 }
 
                 //Solo estoy llenando la cadena con el query, no la estoy ejecutando.
-                $cadenamysql = "update usuario set pass = md5('$usrpass1'), ultcambio = now() where alias = '$usralias';";
+                $cadenamysql = "insert into usuario (alias, pass) values('$usralias', '$usrpass1');";
                 
                 //Ejecutar la consulta y validar que no haya dado error en MySQL
                 if($conn->query($cadenamysql) === TRUE)
                 {
-                    echo "<h1>Contraseña Actualizada</h1>";
+                   echo "<h1>Usuario registrado</h1>";
                 }
                 else 
                 {
-                    echo "Error al modificar la contraseña: " . $conn->error;
+                    echo "Error al registrar la cuenta: " . $conn->error;
                 }
             }
             else
