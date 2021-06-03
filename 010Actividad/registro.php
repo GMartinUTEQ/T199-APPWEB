@@ -68,7 +68,7 @@
                 }
 
                 //Solo estoy llenando la cadena con el query, no la estoy ejecutando.
-                $cadenamysql = "insert into usuario (alias, pass) values('$usralias', '$usrpass1');";
+                $cadenamysql = "insert into usuario (alias, pass) values('$usralias', md5('$usrpass1'));";
                 
                 //Ejecutar la consulta y validar que no haya dado error en MySQL
                 if($conn->query($cadenamysql) === TRUE)
