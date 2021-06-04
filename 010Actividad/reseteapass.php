@@ -1,3 +1,14 @@
+<?php
+
+    $alias = "";
+    $alias_bloq = "";
+    if(isset($_REQUEST["alias"]))
+    {
+        $alias = $_REQUEST["alias"];
+        $alias_bloq = "disabled";
+    }
+?>
+
 <html>
     <head>
         <title>
@@ -13,7 +24,7 @@
                         Usuario:
                     </td>
                     <td>
-                        <input type="text" name="usralias"/>
+                        <input type="text" <?= $alias_bloq ?> name="usralias" value="<?php echo $alias?>"/>
                     </td>
                 </tr>
                 <tr>

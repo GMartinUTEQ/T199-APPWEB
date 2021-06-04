@@ -10,6 +10,7 @@
                 <th>Alias</th>
                 <th>Ultimo Cambio</th>
                 <th>Eliminar</th>
+                <th>Editar</th>
             </tr>
             <?php
                 include("conexion.php");
@@ -28,7 +29,7 @@
                 {
                     while($row = $resultado->fetch_assoc())
                     {
-                        echo "<tr><td>" . $row["idusuario"] . "</td><td>" . $row["alias"] . "</td><td>" . $row["ultcambio"] . "</td><td><a href='usuarios.php?idusuario=" . $row["idusuario"] . "' ><img style='max-height:30px' src='imgs/borrar.png'/></a></td></tr>";
+                        echo "<tr><td>" . $row["idusuario"] . "</td><td>" . $row["alias"] . "</td><td>" . $row["ultcambio"] . "</td><td><a href='usuarios.php?idusuario=" . $row["idusuario"] . "' ><img style='max-height:30px' src='imgs/borrar.png'/></a></td><td><a href='reseteapass.php?alias=" . $row["alias"] . "'><img style='max-height:30px' src='imgs/editar.png' /></a></td></tr>";
                     }
                 }
                 else
