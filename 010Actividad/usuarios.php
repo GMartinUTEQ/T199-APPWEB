@@ -27,9 +27,24 @@
 
                 if($resultado->num_rows > 0)
                 {
+                    
                     while($row = $resultado->fetch_assoc())
                     {
-                        echo "<tr><td>" . $row["idusuario"] . "</td><td>" . $row["alias"] . "</td><td>" . $row["ultcambio"] . "</td><td><a href='usuarios.php?idusuario=" . $row["idusuario"] . "' ><img style='max-height:30px' src='imgs/borrar.png'/></a></td><td><a href='reseteapass.php?alias=" . $row["alias"] . "'><img style='max-height:30px' src='imgs/editar.png' /></a></td></tr>";
+                        echo "<tr>
+                                <td>" . $row["idusuario"] . "</td>
+                                <td>" . $row["alias"] . "</td>
+                                <td>" . $row["ultcambio"] . "</td>
+                                <td>
+                                    <a href='usuarios.php?idusuario=" . $row["idusuario"] . "' >
+                                        <img style='max-height:30px' src='imgs/borrar.png'/>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href='reseteapass.php?alias=" . $row["alias"] . "'>
+                                        <img style='max-height:30px' src='imgs/editar.png' />
+                                    </a>
+                                </td>
+                            </tr>";
                     }
                 }
                 else
@@ -50,7 +65,7 @@
     if(isset($_REQUEST["idusuario"]))
     {
         //Asignando la información que me llegó del post a variables.
-        $idusuario = $_REQUEST["idusuario"];
+        $idusuario = $_REQUEST["idusuario"]; //9
         //Validando que las contraseñas no estén vacías, es decir que si se hayan escrito.
         if(!empty($idusuario))
         {

@@ -90,5 +90,9 @@
             echo "Favor de escribir las contraseñas";
         }
     }
+    else
+    {
+        echo "No se encontraron datos.";
+    }
 
 ?>
