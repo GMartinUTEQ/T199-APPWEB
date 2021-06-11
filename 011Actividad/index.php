@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Collapsible sidebar using Bootstrap 4</title>
+    <title>Sistema de administración T199</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -67,14 +67,14 @@
                 </li>
             </ul>
 
-            <ul class="list-unstyled CTAs">
+            <!--<ul class="list-unstyled CTAs">
                 <li>
                     <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
                 </li>
                 <li>
                     <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
                 </li>
-            </ul>
+            </ul>-->
         </nav>
 
         <!-- Page Content  -->
@@ -116,7 +116,7 @@
 
             <div class="line"></div>
 
-            <h2>Lorem Ipsum Dolor</h2>
+            <!--<h2>Lorem Ipsum Dolor</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
             <div class="line"></div>
@@ -128,6 +128,7 @@
 
             <h3>Lorem Ipsum Dolor</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            -->
         </div>
     </div>
 
