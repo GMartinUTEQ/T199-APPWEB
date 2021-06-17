@@ -32,27 +32,32 @@
                 <div class="col-sm-2">
                 </div>  
                 <div class="col-sm-8">
-                <form action="/action_page.php" class="was-validated">
+                <form action="altausuario.php" method="post" class="was-validated">
                     <div class="form-group">
-                    <label for="uname">Username:</label>
-                    <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                        <label for="usralias">Nombre de usuario:</label>
+                        <input type="text" class="form-control" id="usralias"  name="usralias" required>
+                        <div class="valid-feedback">Válido.</div>
+                        <div class="invalid-feedback">Este campo es requerido.</div>
                     </div>
                     <div class="form-group">
-                    <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                        <label for="usrpassuno">Contraseña:</label>
+                        <input type="password" class="form-control" id="usrpassuno" name="usrpassuno" required>
+                        <div class="valid-feedback">Válido.</div>
+                        <div class="invalid-feedback">Este campo es requerido.</div>
                     </div>
-                    <div class="form-group form-check">
-                    <label class="form-check-label">
+                    <div class="form-group">
+                        <label for="usrpassdos">Confirme Contraseña:</label>
+                        <input type="password" class="form-control" id="usrpassdos" name="usrpassdos" required>
+                        <div class="valid-feedback">Válido.</div>
+                        <div class="invalid-feedback">Este campo es requerido.</div>
+                    </div>
+                    <!--div class="form-group form-check">
+                        <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" name="remember" required> I agree on blabla.
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Check this checkbox to continue.</div>
-                    </label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    </div-->
+                    <button type="submit" class="btn btn-primary">Aceptar</button>
                 </form>
                 </div>
             </div>
@@ -77,3 +82,59 @@
 </body>
 
 </html>
+
+<?php
+
+    //insertando los datos de mi conexión.
+    include("conexion.php");
+
+    //Validando que si me hayan llegado los campos que ocupo.
+    if(isset($_REQUEST["usrpassuno"]) && isset($_REQUEST["usrpassdos"])  && isset($_REQUEST["usralias"]))
+    {
+        //Asignando la información que me llegó del post a variables.
+        $usralias = $_REQUEST["usralias"];
+        $usrpass1 = $_REQUEST["usrpassuno"];
+        $usrpass2 = $_REQUEST["usrpassdos"];
+
+        //Validando que las contraseñas no estén vacías, es decir que si se hayan escrito.
+        if(!empty($usrpass1) && !empty($usrpass2) && !empty($usralias) )
+        {
+            //Validar que las contraseñas sean iguales
+            if($usrpass1 === $usrpass2)
+            {
+                //Validar que no tenga errores de conexión a MySQL
+                if($conn->connect_error)
+                {
+                    echo "Error al conectar a MySQL" . $conn->connect_error;
+                    die("");
+                }
+
+                //Solo estoy llenando la cadena con el query, no la estoy ejecutando.
+                $cadenamysql = "insert into usuario (alias, pass) values('$usralias', md5('$usrpass1'));";
+                
+                //Ejecutar la consulta y validar que no haya dado error en MySQL
+                if($conn->query($cadenamysql) === TRUE)
+                {
+                   echo "<script>alert('Usuario registrado exitosamente');window.location='usuarios.php';</script>";
+                }
+                else 
+                {
+                    echo "Error al registrar la cuenta: " . $conn->error;
+                }
+            }
+            else
+            {
+                echo "Las contraseñas capturadas no son iguales";
+            }
+        }
+        else
+        {
+            echo "Favor de escribir las contraseñas";
+        }
+    }
+    else
+    {
+        echo "No se encontraron datos.";
+    }
+
+?>
