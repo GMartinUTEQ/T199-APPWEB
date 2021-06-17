@@ -3,14 +3,13 @@
     $alias = "";
     $alias_bloq = "";
     $editar = "creausuario.php";
-    var_dump($_GET["alias"]);
     if(isset($_GET["alias"]))
     {
         $alias = $_REQUEST["alias"];
         $alias_bloq = "readonly";
         $editar = "altausuario.php";
     }
-    echo $editar;
+  
 ?>
 <!DOCTYPE html>
 <html>
@@ -102,7 +101,7 @@
 <?php
 
     
-        echo "If Update - " . $editar;
+        
         //insertando los datos de mi conexión.
         include("conexion.php");
 

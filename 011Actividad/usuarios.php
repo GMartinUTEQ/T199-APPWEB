@@ -64,12 +64,12 @@
                                             <td>" . $row["ultcambio"] . "</td>
                                             <td>
                                                 <a href='usuarios.php?idusuario=" . $row["idusuario"] . "' >
-                                                    <img style='max-height:30px' src='imgs/borrar.png'/>
+                                                <i class='fas fa-trash-alt fa-2x'></i>
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href='reseteapass.php?alias=" . $row["alias"] . "'>
-                                                    <img style='max-height:30px' src='imgs/editar.png' />
+                                                <a href='altausuario.php?alias=" . $row["alias"] . "'>
+                                                    <i class='fas fa-edit fa-2x'></i>
                                                 </a>
                                             </td>
                                         </tr>";
@@ -119,3 +119,36 @@
 </body>
 
 </html>
+
+<?php
+
+    //insertando los datos de mi conexión.
+    include("conexion.php");
+    //Validando que si me hayan llegado los campos que ocupo.
+    if(isset($_REQUEST["idusuario"]))
+    {
+        //Asignando la información que me llegó del post a variables.
+        $idusuario = $_REQUEST["idusuario"]; //9
+        //Validando que las contraseñas no estén vacías, es decir que si se hayan escrito.
+        if(!empty($idusuario))
+        {
+            //Validar que no tenga errores de conexión a MySQL
+            if($conn->connect_error)
+            {
+                echo "Error al conectar a MySQL" . $conn->connect_error;
+                die("");
+            }
+            //Solo estoy llenando la cadena con el query, no la estoy ejecutando.
+            $cadenamysql = "delete from usuario where idusuario = $idusuario;";
+            //Ejecutar la consulta y validar que no haya dado error en MySQL
+            if($conn->query($cadenamysql) != TRUE)
+            {
+                echo "Error al eliminar al usuario: " . $conn->error;
+            }
+            else{
+                echo "<script>alert('Usuario eliminado exitosamente');window.location='usuarios.php';</script>";
+            }
+        }
+    }
+
+?>
