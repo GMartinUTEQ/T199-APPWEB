@@ -21,36 +21,12 @@
 <body>
     <div class="wrapper">
         <!-- Sidebar  -->
-        
+        <?php include("menu.html") ?>
 
         <!-- Page Content  -->
         <div id="content">
 
-        <div class="row">
-                <div class="col-sm-2">
-                </div>  
-                <div class="col-sm-8">
-                <div class="text-center">
-                    <img style="max-height:150px;margin-top:40px" src="img/Logo_uteq.png"/>
-                    <h2 style="margin-top:20px">Acceso al sistema</h2>
-                </div>
-                <form action="validalogin.php" method="post" class="was-validated">
-                    <div class="form-group">
-                        <label for="usralias">Nombre de usuario:</label>
-                        <input type="text" class="form-control" id="usralias" <?= $alias_bloq; ?> value="<?= $alias; ?>"  name="usralias" required>
-                        <div class="valid-feedback">Válido.</div>
-                        <div class="invalid-feedback">Este campo es requerido.</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="usrpass">Contraseña:</label>
-                        <input type="password" class="form-control" id="usrpass" name="usrpass" required>
-                        <div class="valid-feedback">Válido.</div>
-                        <div class="invalid-feedback">Este campo es requerido.</div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Entrar</button>
-                </form>
-                </div>
-            </div>
+            <?php include("header.html") ?>
 
             
         </div>
