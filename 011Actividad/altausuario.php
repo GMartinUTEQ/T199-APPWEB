@@ -46,6 +46,7 @@
                 <div class="col-sm-2">
                 </div>  
                 <div class="col-sm-8">
+                <h2>Agregar / Modificar Usuarios</h2>
                 <form action="<?= $editar; ?>" method="post" class="was-validated">
                     <div class="form-group">
                         <label for="usralias">Nombre de usuario:</label>
