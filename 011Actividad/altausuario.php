@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 
     $alias = "";
@@ -39,7 +40,7 @@
         <!-- Page Content  -->
         <div id="content">
 
-            <?php include("header.html") ?>
+            <?php include("header.php") ?>
 
             <div class="row">
                 <div class="col-sm-2">

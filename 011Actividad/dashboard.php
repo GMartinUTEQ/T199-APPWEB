@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -26,7 +27,7 @@
         <!-- Page Content  -->
         <div id="content">
 
-            <?php include("header.html") ?>
+            <?php include("header.php") ?>
 
             
         </div>

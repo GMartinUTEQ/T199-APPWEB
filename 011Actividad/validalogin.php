@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     if(isset($_REQUEST["usralias"]) && isset($_REQUEST["usrpass"]))
     {
         include("conexion.php");
@@ -18,6 +18,8 @@
 
         if($resultado->num_rows > 0)
         {
+            
+            $_SESSION["Usuario"] = $usuario;
             echo "<script>alert('Bienvenido $usuario !');window.location='dashboard.php';</script>";
         }
         else

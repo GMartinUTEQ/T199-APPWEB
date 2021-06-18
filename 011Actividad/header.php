@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if(!isset($_SESSION["Usuario"]))
+    {
+        echo "<script>window.location='index.php';</script>";
+    }
+?>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
 
@@ -12,7 +20,7 @@
                     <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#"><i class="fas fa-user-circle fa-2x"></i><br/>Gabriel</a>
+                                <a class="nav-link" href="#"><i class="fas fa-user-circle fa-2x"></i><br/><?= $_SESSION["Usuario"];?></a>
                             </li>
                         </ul>
                     </div>

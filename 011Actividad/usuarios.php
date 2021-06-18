@@ -1,3 +1,4 @@
+_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -26,7 +27,7 @@
         <!-- Page Content  -->
         <div id="content">
 
-            <?php include("header.html") ?>
+            <?php include("header.php") ?>
 
             <h2>Lista de usuarios</h2>
             <table class="table table-hover" >
