@@ -67,7 +67,7 @@
                         die("");
                     }
 
-                    $cadena = "select idusuario, alias, ultcambio from usuario";
+                    $cadena = "select * from producto";
                     
                     $resultado = $conn->query($cadena);
 
@@ -76,61 +76,40 @@
                         
                         while($row = $resultado->fetch_assoc())
                         {
-                            echo "<tr>
-                                    <td>" . $row["idusuario"] . "</td>
-                                    <td>" . $row["alias"] . "</td>
-                                    <td>" . $row["ultcambio"] . "</td>
-                                    <td>
-                                        <a href='usuarios.php?idusuario=" . $row["idusuario"] . "' >
-                                            <img style='max-height:30px' src='imgs/borrar.png'/>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href='reseteapass.php?alias=" . $row["alias"] . "'>
-                                            <img style='max-height:30px' src='imgs/editar.png' />
-                                        </a>
-                                    </td>
-                                </tr>";
+                            echo "<div class='col mb-5'>
+                                    <div class='card h-100'>
+                                        <div class='badge bg-dark text-white position-absolute' style='top: 0.5rem; right: 0.5rem'>Sale</div>
+                                        <img class='card-img-top' src='https://dummyimage.com/450x300/dee2e6/6c757d.jpg' alt='...' />
+                                        <div class='card-body p-4'>
+                                            <div class='text-center'>
+                                                <h5 class='fw-bolder'>" . $row["nombreproducto"] . "</h5>
+                                                <div class='d-flex justify-content-center small text-warning mb-2'>
+                                                    <div class='bi-star-fill'></div>
+                                                    <div class='bi-star-fill'></div>
+                                                    <div class='bi-star-fill'></div>
+                                                    <div class='bi-star-fill'></div>
+                                                    <div class='bi-star-fill'></div>
+                                                </div>
+                                                <span class='text-muted text-decoration-line-through'>$" . number_format((float)($row["precioproducto"] * 1.18), 2, '.', '') . "</span><br/>
+                                                $" . number_format((float)$row["precioproducto"], 2, '.', '') . "
+                                            </div>
+                                        </div>
+                                        <div class='card-footer p-4 pt-0 border-top-0 bg-transparent'>
+                                            <div class='text-center'><a class='btn btn-outline-dark mt-auto' href='#'>Add to cart</a></div>
+                                        </div>
+                                    </div>
+                                </div>";
                         }
                     }
                     else
                     {
-                        echo "<tr><td colspan='4'>No se obtuvieron resultados</td></tr>";
+                        
                     }
 
                 ?>
 
 
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Special Item</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    $18.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
+                    
                     
                 </div>
             </div>
