@@ -44,6 +44,37 @@
             </div>
         </nav>
         <!-- Product section-->
+
+        <?php
+                    include("conexion.php");
+
+                    if($conn->connect_error)
+                    {
+                        echo "Error de conexión a MySQL";
+                        die("");
+                    }
+
+                    $cadena = "select * from producto";
+                    
+                    $resultado = $conn->query($cadena);
+
+                    if($resultado->num_rows > 0)
+                    {
+                        
+                        while($row = $resultado->fetch_assoc())
+                        {
+                            echo "";
+                        }
+                    }
+                    else
+                    {
+                        
+                    }
+
+                ?>
+
+
+
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
