@@ -57,6 +57,50 @@
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     
+
+                <?php
+                    include("conexion.php");
+
+                    if($conn->connect_error)
+                    {
+                        echo "Error de conexión a MySQL";
+                        die("");
+                    }
+
+                    $cadena = "select idusuario, alias, ultcambio from usuario";
+                    
+                    $resultado = $conn->query($cadena);
+
+                    if($resultado->num_rows > 0)
+                    {
+                        
+                        while($row = $resultado->fetch_assoc())
+                        {
+                            echo "<tr>
+                                    <td>" . $row["idusuario"] . "</td>
+                                    <td>" . $row["alias"] . "</td>
+                                    <td>" . $row["ultcambio"] . "</td>
+                                    <td>
+                                        <a href='usuarios.php?idusuario=" . $row["idusuario"] . "' >
+                                            <img style='max-height:30px' src='imgs/borrar.png'/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href='reseteapass.php?alias=" . $row["alias"] . "'>
+                                            <img style='max-height:30px' src='imgs/editar.png' />
+                                        </a>
+                                    </td>
+                                </tr>";
+                        }
+                    }
+                    else
+                    {
+                        echo "<tr><td colspan='4'>No se obtuvieron resultados</td></tr>";
+                    }
+
+                ?>
+
+
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Sale badge-->
