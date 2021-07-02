@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,6 +15,16 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
+        <?php
+            if(!isset($_SESSION["CarritoItems"]))
+            {
+                $_SESSION["CarritoItems"] = 0;
+            }
+            else
+            {
+                //echo $_SESSION["CarritoItems"];
+            }
+        ?>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
@@ -33,13 +44,15 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex">
+                    
+                        <a href="carrito.php">
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            <span class="badge bg-dark text-white ms-1 rounded-pill"><?= $_SESSION["CarritoItems"]; ?></span>
                         </button>
-                    </form>
+                        </a>
+                    
                 </div>
             </div>
         </nav>

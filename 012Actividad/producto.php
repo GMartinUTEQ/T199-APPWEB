@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,6 +15,16 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
+    <?php
+        if(!isset($_SESSION["CarritoItems"]))
+        {
+            $_SESSION["CarritoItems"] = 0;
+        }
+        else
+        {
+            //echo $_SESSION["CarritoItems"];
+        }
+    ?>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
@@ -33,13 +44,13 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex">
+                    <a href="carrito.php">
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            <span class="badge bg-dark text-white ms-1 rounded-pill"><?= $_SESSION["CarritoItems"]; ?></span>
                         </button>
-                    </form>
+                        </a>
                 </div>
             </div>
         </nav>
@@ -47,7 +58,7 @@
 
         <?php
                     include("conexion.php");
-
+                    
                     if($conn->connect_error)
                     {
                         echo "Error de conexión a MySQL";
@@ -81,11 +92,14 @@
                                                 </div>
                                                 <p class="lead">'. $row["descripcionproducto"] . '</p>
                                                 <div class="d-flex">
-                                                    <input class="form-control text-center me-3" min="' . 0 . '" max="' . $row["inventarioproducto"] . '" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                                                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                                                        <i class="bi-cart-fill me-1"></i>
-                                                        Add to cart
-                                                    </button>
+                                                    <form method="post" action="agregacarrito.php">
+                                                        <input type="number" name="idpro" style="display:none" id="idpro" value="' . $row["idproducto"] . '"/>
+                                                        <input class="form-control text-center me-3" min="' . 0 . '" max="' . $row["inventarioproducto"] . '" id="cantpro" name="cantpro" type="number" value="1" style="max-width: 3rem" />
+                                                        <button class="btn btn-outline-dark flex-shrink-0" type="submit">
+                                                            <i class="bi-cart-fill me-1"></i>
+                                                            Add to cart
+                                                        </button>
+                                                    <form>
                                                 </div>
                                             </div>
                                         </div>
