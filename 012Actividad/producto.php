@@ -16,6 +16,7 @@
     </head>
     <body>
     <?php
+
         if(!isset($_SESSION["CarritoItems"]))
         {
             $_SESSION["CarritoItems"] = 0;

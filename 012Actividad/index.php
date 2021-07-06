@@ -16,9 +16,10 @@
     </head>
     <body>
         <?php
-            if(!isset($_SESSION["CarritoItems"]))
+            if(!isset($_SESSION["carrito"]))
             {
                 $_SESSION["CarritoItems"] = 0;
+                $_SESSION["carrito"] = array();
             }
             else
             {
