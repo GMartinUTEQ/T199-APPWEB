@@ -32,8 +32,8 @@
                     $idpro = $row["idproducto"];
                     $nombrepro = $row["nombre"];
                     $preciopro=$row["precio"];
-                    $idtalla = $row["idtalla"];
-                    $idmarca = $row["idmarca"];
+                    $idtalla = $row["idtalla"]; //2
+                    $idmarca = $row["idmarca"]; //3
                 }
                 } else {
                 echo "0 results";
@@ -65,6 +65,8 @@
                     if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
+                        // $idmarca = 3
+                        // $row["idmarca"] = 3
                         if($idmarca == $row["idmarca"])
                         {
                             echo "<option selected value='" . $row["idmarca"] . "'>" . $row["marca"] . "</option>";
@@ -98,6 +100,8 @@
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
                         $selected = "";
+                        // $idtalla = 2
+                        // $row["idtalla"] = 4
                         if($idtalla == $row["idtalla"])
                         {
                            $selected = "selected";
