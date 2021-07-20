@@ -27,7 +27,7 @@
                 if ($result->num_rows > 0) {
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" . $row["nombre"] . "</td><td>" . $row["precio"] . "</td><td>" . $row["talla"] . "</td><td>" . $row["marca"] . "</td><td><a href='index.php?idpro=" . $row["marca"] ."'>Editar</a></td></tr>" ;
+                    echo "<tr><td>" . $row["nombre"] . "</td><td>" . $row["precio"] . "</td><td>" . $row["talla"] . "</td><td>" . $row["marca"] . "</td><td><a href='index.php?idpro=" . $row["idproducto"] ."'>Editar</a></td></tr>" ;
                 }
                 } else {
                 echo "0 results";

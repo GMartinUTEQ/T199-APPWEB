@@ -65,7 +65,15 @@
                     if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                        echo "<option value='" . $row["idmarca"] . "'>" . $row["marca"] . "</option>";
+                        if($idmarca == $row["idmarca"])
+                        {
+                            echo "<option selected value='" . $row["idmarca"] . "'>" . $row["marca"] . "</option>";
+                        }
+                        else
+                        {
+                            echo "<option value='" . $row["idmarca"] . "'>" . $row["marca"] . "</option>";
+                        }
+                        
                     }
                     } else {
                     echo "0 results";
@@ -89,7 +97,12 @@
                     if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                        echo "<option value='" . $row["idtalla"] . "'>" . $row["talla"] . "</option>";
+                        $selected = "";
+                        if($idtalla == $row["idtalla"])
+                        {
+                           $selected = "selected";
+                        }
+                        echo "<option $selected value='" . $row["idtalla"] . "'>" . $row["talla"] . "</option>";
                     }
                     } else {
                     echo "0 results";
