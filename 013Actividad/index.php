@@ -14,7 +14,7 @@
             if(isset($_REQUEST["idpro"]))
             {
                 //Entonces es una edición
-                $targetAction="editaproducto.php";
+                $targetAction="actualizaproducto.php";
                 $btnSubmit="Actualizar";
 
                 include("conexion.php");
