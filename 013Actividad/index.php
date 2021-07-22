@@ -11,6 +11,8 @@
             $preciopro="";
             $idtalla = 0;
             $idmarca = 0;
+            $imagenprod = "";
+            $idimagen = 0;
             if(isset($_REQUEST["idpro"]))
             {
                 //Entonces es una edición
@@ -23,7 +25,8 @@
                 die("Connection failed: " . $conn->connect_error);
                 }
 
-                $sql = "select idproducto, nombre, precio, idtalla, idmarca from producto where idproducto = " . $_REQUEST["idpro"];
+                $sql = "select producto.idproducto, nombre, precio, idtalla, idmarca, imagen.url, imagen.idimagen from producto left outer join imagen on imagen.idproducto = producto.idproducto where producto.idproducto = " . $_REQUEST["idpro"];
+                //echo $sql; 
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -34,6 +37,8 @@
                     $preciopro=$row["precio"];
                     $idtalla = $row["idtalla"]; //2
                     $idmarca = $row["idmarca"]; //3
+                    $imagenprod = $row["url"];
+                    $idimagen = $row["idimagen"];
                 }
                 } else {
                 echo "0 results";
@@ -116,6 +121,22 @@
             </select><br/>
             Seleccione una imágen del producto:<br/>
             <input type="file" name="fileToUpload" id="fileToUpload"><br/><br/>
+            <?php
+
+                if(!is_null($imagenprod) && !empty($imagenprod))
+                {
+                    echo '
+                    <table>
+                        <tr>
+                            <td><a href="eliminaimagen.php?idimg=' . $idimagen . '&nomimg=' . $imagenprod .  '">Eliminar imagen</a></Td>
+                        </tr>
+                        <tr>
+                           <td> <img style="max-height:100px"  src="uploads/' . $imagenprod . '"/></td>
+                        </tr>
+                    </table><br/>
+                    ';
+                }
+            ?>
             <input type="submit" value="<?=$btnSubmit?>"/>
         </form>
     </body>
