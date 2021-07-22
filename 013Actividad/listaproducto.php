@@ -28,7 +28,12 @@
                 if ($result->num_rows > 0) {
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" . $row["nombre"] . "</td><td><img style='max-width:40px' src='uploads/" . $row["url"] ."'</td><td>" . $row["precio"] . "</td><td>" . $row["talla"] . "</td><td>" . $row["marca"] . "</td><td><a href='index.php?idpro=" . $row["idproducto"] ."'>Editar</a></td></tr>" ;
+                    $urlimagen = "noimage.png";
+                    if(!is_null($row["url"]) && $row["url"] != "")
+                    {
+                        $urlimagen = $row["url"];
+                    }
+                    echo "<tr><td>" . $row["nombre"] . "</td><td><a href='uploads/" . $urlimagen ."' target='_blank'><img style='max-width:40px' src='uploads/" . $urlimagen ."'/></a></td><td>" . $row["precio"] . "</td><td>" . $row["talla"] . "</td><td>" . $row["marca"] . "</td><td><a href='index.php?idpro=" . $row["idproducto"] ."'>Editar</a></td></tr>" ;
                 }
                 } else {
                 echo "0 results";
