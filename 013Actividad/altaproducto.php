@@ -65,7 +65,17 @@ if ($conn->connect_error) {
 $sql = "insert into producto (nombre, precio, idtalla, idmarca) values('" . $_REQUEST["nompro"] . "'," . $_REQUEST["prepro"] . ", " . $_REQUEST["tallapro"] . ", " . $_REQUEST["marcapro"] . ")";
 
 if ($conn->query($sql) === TRUE) {
-  echo "New record created successfully";
+  echo "<br/>Nuevo producto agregado<br/>";
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$ult_id = $conn->insert_id;
+
+
+$sql = "insert into imagen (idproducto, url) values('$ult_id', '$fname');";
+if ($conn->query($sql) === TRUE) {
+  echo "<br/>Nueva imagen agregada<br/>";
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
