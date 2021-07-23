@@ -6,4 +6,11 @@
             <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     </head>
+    <body>
+    <div class="card" style="width:80%; margin-top:40px; margin-left:25px">
+        <div class="card-header">Reporte de visitas</div>
+        <div class="card-body">Content</div>
+        <div class="card-footer">Derechos reservados @gmartin @MorrisCharts</div>
+    </div>
+    </body>
 </html>
