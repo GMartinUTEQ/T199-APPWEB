@@ -9,6 +9,7 @@
     <body>
     <div class="card" style="width:80%; margin-top:40px; margin-left:25px">
         <div class="card-header">Reporte de visitas</div>
+        <div class="card-body">
         <?php
                 include("conexion.php");
 
@@ -16,25 +17,34 @@
                 die("Connection failed: " . $conn->connect_error);
                 }
 
-                $sql = "select producto.idproducto, nombre, precio, talla.talla, marca.marca, imagen.url from producto inner join talla on talla.idtalla = producto.idtalla inner join marca on marca.idmarca = producto.idmarca left outer join imagen on imagen.idproducto = producto.idproducto";
+                $sql = "select
+                (select count(registrado) as nr from visitas where registrado = 0) as noregistrados,
+                (select count(registrado) as r from visitas where registrado = 1) as registrados";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
-                    $urlimagen = "noimage.png";
-                    if(!is_null($row["url"]) && $row["url"] != "")
-                    {
-                        $urlimagen = $row["url"];
-                    }
-                    echo "<tr><td>" . $row["nombre"] . "</td><td><a href='uploads/" . $urlimagen ."' target='_blank'><img style='max-width:40px' src='uploads/" . $urlimagen ."'/></a></td><td>" . $row["precio"] . "</td><td>" . $row["talla"] . "</td><td>" . $row["marca"] . "</td><td><a href='index.php?idpro=" . $row["idproducto"] ."'>Editar</a></td></tr>" ;
+                    echo "<div id='chart_bar'></div>
+                            <script>
+                            Morris.Bar({
+                                element: 'chart_bar',
+                                data: [
+                                { visitas: 'No Registrados', nb: " . $row["noregistrados"] . " },
+                                { visitas: 'Registrados', nb: " . $row["registrados"] . " }
+                                ],
+                                xkey: 'visitas',
+                                ykeys: ['nb'],
+                                labels: ['Visitas']
+                            });
+                            </script>";
                 }
                 } else {
                 echo "0 results";
                 }
                 $conn->close();
             ?>
-        <div class="card-body">Content</div>
+        </div>
         <div class="card-footer">Derechos reservados @gmartin @MorrisCharts</div>
     </div>
     </body>
